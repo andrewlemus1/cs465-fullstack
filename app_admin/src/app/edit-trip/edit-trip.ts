@@ -9,8 +9,8 @@ import { Trip } from '../models/trip';
   selector: 'app-edit-trip',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './edit-trip.component.html',
-  styleUrl: './edit-trip.component.css'
+  templateUrl: './edit-trip.html',
+  styleUrl: './edit-trip.css'
 })
 
 export class EditTripComponent implements OnInit {
