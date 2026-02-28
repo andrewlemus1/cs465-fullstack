@@ -161,3 +161,4 @@ As I prepare to graduate in **June 2026**, this course has reinforced my interes
 **Andrew Lemus**  
 B.S. Computer Science – Software Engineering  
 Southern New Hampshire University  
+Expected Graduation: June 2026
