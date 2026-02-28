@@ -105,12 +105,12 @@ JSON acts as the **bridge** between frontend and backend systems.
 
 ---
 
-## 🧪 Testing
+## Testing
 
 ### API Methods Used
 The application uses RESTful endpoints:
 
-### 🔍 API Testing with Postman
+### API Testing with Postman
 Postman was used to:
 - Send HTTP requests  
 - Verify JSON responses  
@@ -125,7 +125,7 @@ Postman was used to:
 
 ---
 
-### 🔐 Security Considerations
+### Security Considerations
 Security adds complexity to testing because protected routes require authentication.
 
 **Key Considerations**
@@ -138,7 +138,7 @@ These measures help ensure data integrity and safe application use.
 
 ---
 
-## 🎯 Reflection
+## Reflection
 
 This course played a major role in helping me move toward my goal of becoming a software engineer. Through the Travlr Getaways full-stack project, I gained hands-on experience building a complete web application and strengthened my confidence as a developer.
 
