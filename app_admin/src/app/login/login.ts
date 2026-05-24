@@ -41,21 +41,18 @@ export class LoginComponent implements OnInit {
   }
 
   private doLogin(): void {
-    let newUser = {
-      email: this.credentials.email,
-      name: this.credentials.name
-    } as User;
+  const newUser = {
+    email: this.credentials.email,
+    name: this.credentials.name
+  } as User;
 
-    this.authenticationService.login(newUser, this.credentials.password);
-
-    if (this.authenticationService.isLoggedIn()) {
+  this.authenticationService.login(newUser, this.credentials.password)
+    .then(() => {
       this.router.navigate(['']);
-    } else {
-      var timer = setTimeout(() => {
-        if (this.authenticationService.isLoggedIn()) {
-          this.router.navigate(['']);
-        }
-      }, 3000);
-    }
-  }
+    })
+    .catch((error: any) => {
+      console.log('Login error:', error);
+      this.formError = 'Login failed. Please check your email and password.';
+    });
+}
 }

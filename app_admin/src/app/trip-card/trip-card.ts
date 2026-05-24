@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { Trip } from  '../models/trip';
 import { AuthenticationService } from '../services/authentication';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-trip-card',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './trip-card.html',
   styleUrl: './trip-card.css',
   providers: [AuthenticationService]
@@ -23,12 +24,6 @@ export class TripCard implements OnInit {
 
   ngOnInit(): void {
     
-  }
-
-  public editTrip(trip: Trip) {
-    localStorage.removeItem('tripCode');
-    localStorage.setItem('tripCode', trip.code);
-    this.router.navigate(['edit-trip']);
   }
   public isLoggedIn()
   {

@@ -74,22 +74,25 @@ export class AuthenticationService {
   // result and only process when the Observable condition is satisfied
   // Uncomment the two console.log messages for additional debugging 
   // information.
-  public login(user: User, passwd: string): void {
+  public login(user: User, passwd: string): Promise<any> {
+  return new Promise((resolve, reject) => {
     this.tripData.login(user, passwd)
-    .subscribe({
-      next: (value: any) => {
-        if(value)
-        {
-          console.log(value);
-          this.authResp = value;
-          this.saveToken(this.authResp.token);
+      .subscribe({
+        next: (value: any) => {
+          if (value && value.token) {
+            this.authResp = value;
+            this.saveToken(this.authResp.token);
+            resolve(value);
+          } else {
+            reject('No token returned from login.');
+          }
+        },
+        error: (error: any) => {
+          reject(error);
         }
-      },
-      error: (error: any) => {
-        console.log('Error ' + error);
-      }
-    })
-  }
+      });
+  });
+}
 
   // Register method that leverages the register method
   // tripDataService

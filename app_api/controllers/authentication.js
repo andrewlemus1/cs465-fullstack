@@ -30,7 +30,7 @@ const register = async (req, res) => {
         const token = user.generateJWT();
         return res
             .status(200)
-            .json(token);
+            .json({ token });
     }
 };
 

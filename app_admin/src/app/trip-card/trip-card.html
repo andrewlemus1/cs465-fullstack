@@ -12,7 +12,7 @@
         <p class="card-text" [innerHTML]="trip.description">
         </p>
         <div *ngIf="isLoggedIn()">
-            <button (click)="editTrip(trip)" class="btn btn-info">Edit Trip</button>
+            <a [routerLink]="['/edit-trip', trip.code]" class="btn btn-info">Edit</a>
         </div>
     </div>
 </div>
