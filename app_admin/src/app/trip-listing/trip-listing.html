@@ -1,9 +1,58 @@
-<!-- <pre>{{trips | json}}</pre> -->
 <div>
-    <button (click)="addTrip()" class="btn btn-info">AddTrip</button>
+    <button (click)="addTrip()" class="btn btn-info">Add Trip</button>
 </div>
+
+<div class="row mb-3 mt-3">
+
+    <div class="col-md-3">
+        <input
+            type="text"
+            class="form-control"
+            placeholder="Search destination or trip"
+            [(ngModel)]="searchText"
+            (input)="applyFilters()">
+    </div>
+
+    <div class="col-md-3">
+        <input
+            type="number"
+            class="form-control"
+            placeholder="Maximum Price"
+            [(ngModel)]="maxPrice"
+            (input)="applyFilters()">
+    </div>
+
+    <div class="col-md-3">
+        <select
+            class="form-control"
+            [(ngModel)]="durationFilter"
+            (change)="applyFilters()">
+
+            <option value="">All Durations</option>
+            <option value="3">3 Nights</option>
+            <option value="5">5 Nights</option>
+            <option value="7">7 Nights</option>
+
+        </select>
+    </div>
+
+    <div class="col-md-3">
+        <select
+            class="form-control"
+            [(ngModel)]="sortOption"
+            (change)="applyFilters()">
+
+            <option value="">Sort By</option>
+            <option value="lowToHigh">Price Low to High</option>
+            <option value="highToLow">Price High to Low</option>
+
+        </select>
+    </div>
+
+</div>
+
 <div class="row">
-    <div *ngFor="let trip of trips" class ='col-md-4'>
+    <div *ngFor="let trip of filteredTrips" class="col-md-4">
         <app-trip-card [trip]="trip" class="card-deck mt-2"></app-trip-card>
     </div>
 </div>

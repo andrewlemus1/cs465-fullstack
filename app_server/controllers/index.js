@@ -1,9 +1,9 @@
-const main = async function (req, res, next) {
+const index = async function (req, res, next) {
     res.render('index', {
         title: 'Travlr Getaways'
     });
 };
 
 module.exports = {
-    main,
+    index,
 };
