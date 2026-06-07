@@ -6,10 +6,14 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+// Bring in the database
+require('./app_api/models/db');
+
 // Define routers
 var mainRouter = require('./app_server/routes/main');
 var usersRouter = require('./app_server/routes/users');
 var travelRouter = require('./app_server/routes/travel');
+var dbRouter = require('./app_api/models/db');
 var apiRouter = require('./app_api/routes/index');
 var roomsRouter = require('./app_server/routes/rooms');
 var mealsRouter = require('./app_server/routes/meals');

@@ -146,9 +146,42 @@ const tripsUpdateTrip = async (req, res) => {
   }
 };
 
+const tripsStats = async (req, res) => {
+  try {
+    const stats = await Trip.aggregate([
+      {
+        $group: {
+          _id: null,
+          totalTrips: { $sum: 1 },
+          averagePrice: { $avg: "$perPerson" },
+          cheapestTrip: { $min: "$perPerson" },
+          mostExpensiveTrip: { $max: "$perPerson" }
+        }
+      }
+    ]);
+
+    if (!stats.length) {
+      return res.status(404).json({ message: "No trip data found." });
+    }
+
+    return res.status(200).json({
+      totalTrips: stats[0].totalTrips,
+      averagePrice: Math.round(stats[0].averagePrice),
+      cheapestTrip: stats[0].cheapestTrip,
+      mostExpensiveTrip: stats[0].mostExpensiveTrip
+    });
+  } catch (err) {
+    return res.status(500).json({
+      message: "Error retrieving trip statistics.",
+      error: err.message
+    });
+  }
+};
+
 module.exports = {
   tripsList,
   tripsFindByCode,
   tripsAddTrip,
-  tripsUpdateTrip
+  tripsUpdateTrip,
+  tripsStats
 };
